@@ -3,6 +3,7 @@
 function selector()
 {
 	Write-Host "Select Browser to uninstall:"
+	Write-Host "0) Exit"
 	Write-Host "1) Firefox"
 	Write-Host "2) Nocturne"
 	
@@ -195,7 +196,11 @@ function main()
 		$selection = selector
 		$result = 0
 
-		if ($selection -eq 1) {
+		if ($selection -eq 0) {
+			break;
+		} 
+
+		elseif ($selection -eq 1) {
 			$result = uninstall_firefox
 		}
 		elseif ($selection -eq 2) {
@@ -215,6 +220,11 @@ function main()
 
 		break
 	}
+
+	if ($selection -eq 0) {
+		Write-Host "Exiting program..."
+		return
+	} 
 	
 	uninstall_authUx
 	setup
