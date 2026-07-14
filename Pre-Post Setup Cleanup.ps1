@@ -97,9 +97,11 @@ function uninstall_browser()
 		"$env:PUBLIC\Desktop\Mozilla Firefox.lnk",
 		"$env:PUBLIC\Desktop\Firefox.lnk",
 		"$env:PUBLIC\Desktop\Nocturne.lnk",
+		"$env:PUBLIC\Desktop\Google Chrome.lnk",
 		"$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Mozilla Firefox.lnk",
 		"$env:ProgramData\Microsoft\Windows\Start Menu\Programs\Mozilla Firefox.lnk",
-		"$env:ProgramData\Microsoft\Windows\Start Menu\Programs\Nocturne.lnk"
+		"$env:ProgramData\Microsoft\Windows\Start Menu\Programs\Nocturne.lnk",
+		"$env:ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome\Google Chrome.lnk",
 	)
 
 	foreach ($shortcut in $shortcutPaths) {
