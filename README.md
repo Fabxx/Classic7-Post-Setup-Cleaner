@@ -4,3 +4,10 @@
 </p>
 
 This powershell script allows you to do a cleanup before being able to re-run post setup without issues and change your settings
+
+# Showcase
+
+
+https://github.com/user-attachments/assets/f7c2168b-0c14-438f-91ee-46d525abc6b5
+
+
