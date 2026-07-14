@@ -1,5 +1,18 @@
 # Cleanup script to re-run Post-Setup executable - Fabxx
 
+# Check if executing as admin, if not obtain admin permissions
+$isAdmin = ([Security.Principal.WindowsPrincipal] `
+    [Security.Principal.WindowsIdentity]::GetCurrent()
+).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+
+if (-not $isAdmin) {
+    Start-Process powershell.exe `
+        -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" `
+        -Verb RunAs
+
+    exit
+}
+
 $script:State = @{
 	isBrowserInstalled = 0
     BrowserUninstalled = 0
@@ -101,7 +114,7 @@ function uninstall_browser()
 		"$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Mozilla Firefox.lnk",
 		"$env:ProgramData\Microsoft\Windows\Start Menu\Programs\Mozilla Firefox.lnk",
 		"$env:ProgramData\Microsoft\Windows\Start Menu\Programs\Nocturne.lnk",
-		"$env:ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome\Google Chrome.lnk",
+		"$env:ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome\Google Chrome.lnk"
 	)
 
 	foreach ($shortcut in $shortcutPaths) {
